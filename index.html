@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#140f22"><title>Hey Dardoura...</title>
+<link rel="stylesheet" href="./style.css"></head><body>
+<button id="music" class="pill" aria-label="Toggle music">Music off</button>
+<button id="retry" class="pill retry" hidden>Tap to play the song</button>
+<div id="toast" role="status"></div>
+
+<section class="scene on" id="intro"><h1>Hey Dardoura...</h1><p>Someone left a small room lit for you.</p><button class="btn" id="come">Come in</button></section>
+
+<section class="scene" id="room"><p class="hint">Tap things. Some of them talk.</p>
+<svg viewBox="0 0 360 440" id="roomsvg">
+<rect width="360" height="440" fill="#21162f"/><rect y="340" width="360" height="100" fill="#2b1b33"/>
+<circle cx="180" cy="300" r="170" fill="url(#g)"/>
+<defs><radialGradient id="g"><stop offset="0" stop-color="#ffb765" stop-opacity=".35"/><stop offset="1" stop-color="#ffb765" stop-opacity="0"/></radialGradient></defs>
+<g class="obj" id="win" data-m="The night is quiet. It's waiting for you."><rect x="110" y="40" width="140" height="150" rx="70" fill="#0d0a1c" stroke="#6b4a4a" stroke-width="7"/><path d="M180 40v150M110 115h140" stroke="#6b4a4a" stroke-width="4"/></g>
+<g class="star"><circle cx="145" cy="80" r="2" fill="#fff"/><circle cx="215" cy="100" r="1.6" fill="#fff"/><circle cx="160" cy="150" r="1.5" fill="#fff"/><circle cx="220" cy="58" r="1.8" fill="#fff"/></g>
+<g class="obj" id="moon" data-m="Hi. Tap me a few more times..."><circle cx="200" cy="85" r="17" fill="#fdeede"/><circle cx="208" cy="80" r="15" fill="#0d0a1c"/></g>
+<g class="obj bal" id="b1" data-m="Only three balloons. The room is small, the wishes are not."><ellipse cx="50" cy="110" rx="20" ry="26" fill="#f2a2b8"/><path d="M50 136q-6 40 6 90" stroke="#fdeede" fill="none"/></g>
+<g class="obj bal" id="b2" data-m="This one is pink because you'd pick pink."><ellipse cx="82" cy="135" rx="18" ry="24" fill="#c98bdb"/><path d="M82 159q4 40-8 70" stroke="#fdeede" fill="none"/></g>
+<g class="obj bal" id="b3" data-m="Float high, Dardoura."><ellipse cx="310" cy="120" rx="20" ry="26" fill="#ffb765"/><path d="M310 146q8 40-6 100" stroke="#fdeede" fill="none"/></g>
+<g class="obj" id="plant" data-m="Small flowers, because you make ordinary days softer."><path d="M290 340v-50M290 310q-20-10-25-30M290 300q20-10 22-28" stroke="#6fae8a" stroke-width="3" fill="none"/><circle cx="265" cy="278" r="8" fill="#f2a2b8"/><circle cx="312" cy="270" r="8" fill="#ffb765"/><circle cx="290" cy="286" r="8" fill="#fdeede"/><path d="M275 340h30l-4 30h-22z" fill="#a4603f"/></g>
+<rect x="40" y="350" width="280" height="14" rx="4" fill="#7a4a3a"/><path d="M60 364v60M300 364v60" stroke="#7a4a3a" stroke-width="8"/>
+<g class="obj" id="cake" data-m="A cake is waiting. Keep going."><rect x="140" y="310" width="80" height="40" rx="6" fill="#f2a2b8"/><path d="M140 322q10 10 20 0t20 0 20 0 20 0" fill="#fdeede"/><rect x="140" y="310" width="80" height="8" rx="4" fill="#fdeede"/></g>
+<g class="obj" id="cand" data-m="Three tiny flames, all for you."><path d="M160 310v-18M180 310v-22M200 310v-18" stroke="#fdeede" stroke-width="4"/><ellipse class="fl" cx="160" cy="286" rx="3" ry="6" fill="#ffb765"/><ellipse class="fl" cx="180" cy="282" rx="3" ry="6" fill="#ffb765"/><ellipse class="fl" cx="200" cy="286" rx="3" ry="6" fill="#ffb765"/></g>
+<g class="obj" id="gift" data-m="Not yet. Patience is part of the gift."><rect x="60" y="312" width="50" height="38" fill="#c98bdb"/><path d="M85 312v38M60 330h50" stroke="#fdeede" stroke-width="5"/><path d="M85 312q-14-16-18-2t18 2q14-16 18-2t-18 2" fill="none" stroke="#fdeede" stroke-width="3"/></g>
+<g class="obj" id="lamp" data-m="The warm light stays on for you."><path d="M255 350v-40" stroke="#ffb765" stroke-width="3"/><path d="M243 310l24 0-6-24h-12z" fill="#ffb765"/></g>
+</svg><button class="btn" id="toSecret" hidden>Something is hidden</button></section>
+
+<section class="scene" id="secret"><p>There's a message hidden in the stars.</p><button id="bigstar" class="bigstar" aria-label="star">✦</button><p id="smsg" class="reveal">You found it. Dorra, you are very easy to love and very hard to forget.</p><button class="btn" id="toQuiz" hidden>Continue</button></section>
+
+<section class="scene" id="quiz"><p id="q"></p><div id="opts"></div><p id="resp" class="reveal"></p></section>
+
+<section class="scene" id="mem"><div class="card" id="card"></div><button class="btn" id="nextmem">Next</button></section>
+
+<section class="scene" id="cakes"><p id="cp">Tap each candle to light it.</p>
+<svg viewBox="0 0 240 240" id="bigcake"><rect x="30" y="140" width="180" height="70" rx="10" fill="#f2a2b8"/><rect x="30" y="140" width="180" height="16" rx="8" fill="#fdeede"/><path d="M30 160q15 16 30 0t30 0 30 0 30 0 30 0 30 0" fill="#fdeede"/><circle cx="70" cy="190" r="5" fill="#c98bdb"/><circle cx="120" cy="196" r="5" fill="#ffb765"/><circle cx="170" cy="190" r="5" fill="#c98bdb"/>
+<g class="cd" data-i="0"><rect x="74" y="100" width="8" height="40" fill="#fdeede"/><ellipse class="fl2" cx="78" cy="90" rx="6" ry="12"/></g><g class="cd" data-i="1"><rect x="116" y="96" width="8" height="44" fill="#fdeede"/><ellipse class="fl2" cx="120" cy="86" rx="6" ry="12"/></g><g class="cd" data-i="2"><rect x="158" y="100" width="8" height="40" fill="#fdeede"/><ellipse class="fl2" cx="162" cy="90" rx="6" ry="12"/></g></svg>
+<button class="btn" id="blow" hidden>Blow them out</button></section>
+
+<section class="scene" id="wish"><p>Close your eyes. Make a wish.</p><textarea id="wt" rows="3" placeholder="Whisper it here (it stays only on your screen)"></textarea><button class="btn" id="sendw">Send it to the stars</button></section>
+
+<section class="scene" id="giftsc"><p id="gp">One last thing. Tap the gift.</p><button id="box" class="box" aria-label="gift"><i class="lid"></i><i class="bx"></i></button><p id="gmsg" class="reveal">Your gift is this whole night, made slowly just for you. The last part is a letter.</p><button class="btn" id="toLetter" hidden>Open the letter</button></section>
+
+<section class="scene" id="letter"><div class="paper"><p id="lt"></p></div><button class="btn" id="replay" hidden>Read again</button></section>
+
+<section class="scene" id="egg"><h2>Secret found ✦</h2><p>Five taps on the moon? Only someone curious would do that. The moon keeps one secret: it has been watching over you all night.</p><button class="btn" id="back">Back to the room</button></section>
+<script src="./script.js"></script></body></html>
